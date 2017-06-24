@@ -4,7 +4,8 @@
   "description": "freeCodeCamp back-end project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/deshmukhmayur/fcc-timestamp-microservice/issues"
   },
-  "homepage": "https://github.com/deshmukhmayur/fcc-timestamp-microservice#readme"
+  "homepage": "https://github.com/deshmukhmayur/fcc-timestamp-microservice#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongodb": "^2.2.29",
+    "node-env-file": "^0.1.8"
+  }
 }
