@@ -6,8 +6,10 @@ var app = express();
 
 env(__dirname + '/.env');
 
+// to prettify JSON output
 // app.set('json spaces', 40);
 
+// to serve static files without routes
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
