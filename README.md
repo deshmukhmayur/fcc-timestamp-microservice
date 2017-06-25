@@ -1,1 +1,3 @@
-# freeCodeCamp back-end project 1
+# Timestamp Microservice (JSON API)
+
+freeCodeCamp back-end project 1

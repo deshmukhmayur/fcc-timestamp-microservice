@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require('express');
 var env = require('node-env-file');
 
@@ -7,25 +8,30 @@ env(__dirname + '/.env');
 
 // app.set('json spaces', 40);
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // routes
-app.get('/', function(req, res) {
-  res.json({unix:null, natural:null});
-  // res.type('txt').send(process.env.SECRET);
-});
-
 app.get('/:date', function(req, res) {
-  var date = req.params.date;
-  var formatter = Intl.DateTimeFormat("en", { month: "long", day: 'numeric', year: 'numeric' });
+  
+  try {
+    var date = req.params.date;
+    var formatter = Intl.DateTimeFormat("en", { month: "long", day: 'numeric', year: 'numeric' });
 
-  if (!isNaN(date)) {
-    date = new Date(Number(date)  * 1000);
-  } else {
-    date = new Date(date);
+    if (!isNaN(date)) {
+      date = new Date(Number(date)  * 1000);
+    } else {
+      date = new Date(date);
+    }
+    res.json({
+      unix: Math.floor(date.getTime()/1000),
+      natural: formatter.format(date)
+    });
+  } catch (e) {
+    res.json({
+      unix: null,
+      natural: null
+    });
   }
-  res.json({
-    unix: Math.floor(date.getTime()/1000),
-    natural: formatter.format(date)
-  });
 });
 
 
